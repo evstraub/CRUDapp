@@ -1,9 +1,31 @@
 <%- include("layout/header") %>
 
 <div class="container">
-    <div class="row">
+    <div class="row my-4">
         <div class="col-1g-12">
-            <h1>Home Page Content</h1>
+            <table class="table table-striped text-center">
+                <thead>
+                    <tr class="table-dark">
+                       <th>ID</th> 
+                       <th>Image</th> 
+                       <th>Name</th> 
+                       <th>Email</th> 
+                       <th>Phone</th> 
+                       <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>1</td>
+                    <td><img src="" alt=""></td>
+                    <td>Ethan Straub</td>
+                    <td>evstraub@gmail.com</td>
+                    <td>183283838</td>
+                    <td>
+                        <a href="" class="text-primary"><i class="fas fa-edit fa-lg mx-1"></i></a>
+                        <a href="" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a>
+                    </td>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
