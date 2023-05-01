@@ -3,6 +3,7 @@ const router = express.Router()
 const User =require('../models/users')
 const multer = require('multer')
 const session = require('express-session')
+const users = require('../models/users')
 
 //image upload 
 const storage = multer.diskStorage({
@@ -27,23 +28,35 @@ router.post('/add', upload, (req, res) => {
        image: req.file.filename, 
     })
    
-    user.save().then(() =>{
-       req.session.message ={
+    user.save((err) =>{
+       if(err){
+        res.json({message: err.message, type : 'danger'})
+       }else {
+        req.session.message ={
         type: "success",
         message: "user added successfully!"
        }
         res.redirect("/");
-       
-        
-    }).catch((err)=>{
-        console.log(err);
+    }  
     })
 });
    
+//get all users route
    
 router.get('/', (req, res) =>{
-    res.render('index', {title: "Home"})
-})
+ User.find().exec((err, users) =>{
+   if(err){
+    res.json({message: err.message})
+   } else {
+    res.render('index',{
+        title: 'Home Page',
+        users:users
+    })
+   }
+   })
+   })
+ 
+
 
 router.get('/add', (req, res) =>{
     res.render('add_users', {title: "Add Users"})
