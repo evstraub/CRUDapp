@@ -1,0 +1,44 @@
+<%- include("layout/header") %>
+
+<div class="container" style="display: flex; align-items: center; justify-content:center;">
+    <div class="card" style="width: 18rem;">
+       <div class="card-body">
+          
+        <div class="row bg-light">
+            <div class="col-1g-12">
+                <h3>Edit User (<%= user.name %>)</h3>
+                <form action="/update/<%=user._id  %>" method="post" id="ad-form" enctype="multipart/form-data">
+                    <div class="mb-2">
+                      <label for="exampleInputEmail1" class="form-label">Name</label>
+                      <input type="text" class="form-control" name="name" id="exampleInputEmail1" aria-describedby="name" value="<%= user.name %>" required/>
+                     
+                    </div>
+                    <div class="mb-2">
+                      <label for="exampleInputPassword1" class="form-label">Email</label>
+                      <input type="email" class="form-control"name="email" id="exampleInputPassword1" value="<%= user.email %>" required/>
+                    </div>
+                    <div class="mb-2">
+                      <label for="exampleInputPassword1" class="form-label">Phone</label>
+                      <input type="number" class="form-control" name="phone" id="exampleInputPassword1" value="<%= user.phone %>" required/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Image</label>
+                        <input class="form-control" type="file" name="image" id="formFile"/>
+                        <img src="/<%= user.image  %>" width="100" class="img-thumbnail mt-1">
+                      </div>
+                   <input type="hidden" name="old_image" value="<%= user.image %>"/>
+                    <button type="submit" name="submit" value="Update User" class="btn btn-outline-success">Update</button>
+                  </form>       
+                 </div>
+        </div>
+        </div>
+      </div>
+</div>
+
+
+
+
+<%- include("layout/footer") %>
+
+
+
